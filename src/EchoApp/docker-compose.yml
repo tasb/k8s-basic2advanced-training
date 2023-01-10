@@ -1,0 +1,19 @@
+version: '3'
+services:
+  echo-db:
+    image: postgres:14.2-alpine
+  
+  echo-webapp:
+    image: echo-webapp:compose
+    build:
+      context: echo-webapp
+    depends_on:
+      - echo-api
+  
+  echo-api:
+    image: echo-webapi:compose
+    build:
+      context: echo-api
+      dockerfile: ./Dockerfile.multi
+    depends_on:
+      - echo-db

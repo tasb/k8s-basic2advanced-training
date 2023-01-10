@@ -1,0 +1,30 @@
+version: '3'
+services:
+  echo-db:
+    environment:
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=P@ssw0rd
+    # volumes:
+    #   - ./tmp:/var/lib/postgresql/data:rw
+
+  echo-webapp:
+    ports:
+      - "10000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
+      - EchoAPIServer=echo-api
+
+  echo-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__EchoDB=User ID=dbuser;Password=P@ssw0rd;Server=echo-db;Port=5432;Database=EchoDb;Integrated Security=true;Pooling=true;
+    ports:
+        - "10001:80"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+
+    

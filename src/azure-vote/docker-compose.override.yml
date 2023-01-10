@@ -1,0 +1,11 @@
+version: '3'
+services:
+  voting-db:
+    ports:
+      - 9002:6379 
+  
+  voting-app:
+    ports:
+      - 9001:80
+    environment:
+      - REDIS=voting-db

@@ -1,0 +1,11 @@
+version: '3'
+services:
+  voting-db:
+    image: redis
+  
+  voting-app:
+    image: tasb/voting-app:compose
+    build:
+      context: .
+    depends_on:
+      - voting-db
