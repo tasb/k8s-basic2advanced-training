@@ -1,6 +1,6 @@
 # Kubernetes Basic to Advanced Course
 
-On this repo you can find slides, demos and labs for Kubernetes Basic to Advanced Training.
+On this repo you can find slides, demos and labs for Kubernetes Basic to Advanced Course.
 
 If you prefer a web verions, you can navigate to <https://theonorg.github.io/k8s-basic2advanced-training/> to have access an HTML version of these instructions.
 
@@ -8,8 +8,6 @@ If you prefer a web verions, you can navigate to <https://theonorg.github.io/k8s
 
 - [Description](#description)
 - [Requirements](#requirements)
-- [Who this course is for](#who-this-course-is-for)
-- [Course content](#course-content)
 - [Prepare your environment](#prepare-your-environment)
   - [Windows](#windows)
   - [Ubuntu](#ubuntu)
@@ -25,7 +23,7 @@ Kubernetes is an open source platform for container orchestration and management
 
 This course makes you learn how to use Kubernetes to build, deploy, and manage containers and cluster components in a secure and scalable environment.
 
-By the end of this training, participants will be able to:
+By the end of this course, participants will be able to:
 
 - Understand the architecture, core concepts, and components of a Kubernetes ecosystem.
 - Set up, install, and configure a Kubernetes cluster for container orchestration.
@@ -101,12 +99,12 @@ You may navigate for each one individually or you may follow the sequence starti
 3. [Managing services](labs/lab03.md)
 4. [Storage in Kubernetes](labs/lab04.md)
 5. [Scalling and Probes](labs/lab05.md)
-6. [Handle Kubernetes Scheduling](labs/lab06.md)
-7. [Different Workloads](labs/lab07.md)
-8. [Secure your cluster](labs/lab08.md)
-9. [Network Policies](labs/lab09.md)
-10. [Using Helm to deploy your app](labs/lab10.md)
-11. [Monitor your cluster and your application](labs/lab11.md)
+6. Handle Kubernetes Scheduling
+7. Different Workloads
+8. Secure your cluster
+9. Network Policies
+10. Using Helm to deploy your app
+11. Monitor your cluster and your application
 
 ## ToDo App project
 
@@ -119,17 +117,17 @@ With this simple ToDo App you have the hands-on experience to create all needed 
 Get access to the content used to share Kubernetes concepts during sessions.
 
 1. [Container orchestration](slides/Session01.pdf)
-2. [Introduction to Kubernetes](slides/Session02.pdf)
-3. [Deployment lifecycle](slides/Session03.pdf)
-4. [Managing services](slides/Session04.pdf)
-5. [Storage in Kubernetes](slides/Session05.pdf)
-6. [Scalling and Probes](slides/Session06.pdf)
-7. [Handle Kubernetes Scheduling](slides/Session07.pdf)
-8. [Different Workloads](slides/Session08.pdf)
-9. [Secure your cluster](slides/Session09.pdf)
-10. [Network Policies](slides/Session10.pdf)
-11. [Using Helm to deploy your app](slides/Session11.pdf)
-12. [Monitor your cluster and your application](slides/Session12.pdf)
+2. Introduction to Kubernetes
+3. Deployment lifecycle
+4. Managing services
+5. Storage in Kubernetes
+6. Scalling and Probes
+7. Handle Kubernetes Scheduling
+8. Different Workloads
+9. Secure your cluster
+10. Network Policies
+11. Using Helm to deploy your app
+12. Monitor your cluster and your application
 
 ## Feedback
 
