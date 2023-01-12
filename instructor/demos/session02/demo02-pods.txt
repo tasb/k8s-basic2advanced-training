@@ -1,0 +1,65 @@
+kubectl run my-pod --image=nginx --port=80
+
+kubectl get pods
+
+kubectl describe pod my-pod
+
+kubectl delete pod my-pod
+
+kubectl apply -f pod.yaml
+
+kubectl get pods
+
+#kubectl get pod nginx-pod -o yaml
+
+kubectl apply -f bad-image.yaml
+
+kubectl get pods
+
+kubectl describe pod/bad-image
+
+---> fix bad-image.yaml
+
+kubectl apply -f bad-image.yaml
+
+kubectl get pods
+
+kubectl apply -f voting-app.yml
+
+kubectl get pods
+
+kubectl exec -it nginx-pod -- sh
+
+kubectl exec -it vote-app -c vote-front -- bash
+
+kubectl exec -it vote-app -- bash
+
+curl localhost
+
+kubectl port-forward nginx-pod 8080:80 --address 0.0.0.0
+
+kubectl port-forward vote-app 8080:80 --address 0.0.0.0
+
+==============================================================
+
+kubectl apply -f pod-with-resources.yaml
+
+kubectl top pod cpu-demo 
+
+--> uncomment limits and resources 
+
+kubectl apply -f pod-with-resources.yaml
+
+kubectl delete pod cpu-demo
+
+kubectl apply -f pod-with-resources.yaml
+
+kubectl top pod cpu-demo
+
+==============================================================
+
+kubectl apply -f pod-with-high-resources.yaml
+
+kubectl get pods
+
+kubectl describe pod no-resources-pod

@@ -1,10 +1,10 @@
 version: '3'
 services:
   voting-db:
-    image: redis
+    image: ghcr.io/theonorg/vote-app:redis-arm
   
   voting-app:
-    image: tasb/voting-app:compose
+    image: ghcr.io/theonorg/vote-app:python-redis-arm
     build:
       context: .
     depends_on:

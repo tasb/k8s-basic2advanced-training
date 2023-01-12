@@ -8,6 +8,7 @@ ADD requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 FROM voting-prep as voting-final
+LABEL org.opencontainers.image.source=https://github.com/theonorg/k8s-basic2advanced-training
 ADD . /app
 RUN chmod +x /app/start.sh
 ENTRYPOINT "/app/start.sh"

@@ -2,70 +2,13 @@
 
 On this lab you'll create a new deployment and work with revisions.
 
+On this lab you'll create a new deployment and work with revisions.
+
 ## On this lab
 
-- [Work with namespaces](lab05.md#work-with-namespaces)
 - [Create your first Deployment](lab06.md#create-your-first-deployment)
 - [Update deployment](lab06.md#update-deployment)
 - [Rollback deployment](lab06.md#rollback-deployment)
-
-## Work with namespaces
-
-Namespaces allow you to create logic isolation inside your cluster and create 
-
-First, create a new namespace.
-
-```bash
-kubectl create ns my-ns
-```
-
-You still have your voting app running on `default` namespace and now you'll create a new pod on new namespace.
-
-```bash
-kubectl apply -f vote-app.yaml -n my-ns
-```
-
-On the command you added `-n my-ns` option to inform Kubernetes that you want to create this pod on namespace `my-ns`.
-
-From now on, you need to add this option on all your commands to interact with resources available on this namespace.
-
-Let's check if new pod is running properly.
-
-```bash
-kubectl get pods -n my-ns
-```
-
-You can see that the name of the pod is exactly the same that the previous one that you created. Since they are in different namespace this is possible to happen.
-
-Let's try to have access to this webapp.
-
-```bash
-kubectl port-forward vote-app -n my-ns 9000:80
-```
-
-Now it's time to navigate to <http://localhost:9000> and have access to voting app website.
-
-You should get an webpage like this with 0 votes.
-
-![Voting App](images/lab02/image01.jpg "Voting App")
-
-Please make your votes clicking on "Cats" and "Dogs" to make changes on the values.
-
-To stop port forwarding use `Ctrl+c` on the terminal.
-
-It's time for clean up.
-
-All resources that exists on a namespace are delete when you delete the namespace.
-
-```bash
-kubectl delete ns my-ns
-```
-
-The first voting app is still running and to delete it use the following command.
-
-```bash
-kubectl delete pod vote-app
-```
 
 ## Create your first Deployment
 
@@ -231,6 +174,4 @@ kubectl delete deployment mydep
 
 Next you'll see how you can work with this deployments as a unique object.
 
-## Next Lab: [Managing services >](lab07.md)
-
-[Return home >](../README.md#labs)
+## Next Lab: [Managing services >](lab03.md)

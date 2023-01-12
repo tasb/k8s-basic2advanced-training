@@ -1,0 +1,4 @@
+FROM redis
+LABEL org.opencontainers.image.source=https://github.com/theonorg/k8s-basic2advanced-training
+
+RUN apt-get update && apt-get install -y curl procps
