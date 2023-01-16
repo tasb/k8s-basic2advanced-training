@@ -63,3 +63,13 @@ kubectl apply -f pod-with-high-resources.yaml
 kubectl get pods
 
 kubectl describe pod no-resources-pod
+
+==============================================================
+
+kubectl get pods
+
+kubectl get pod vote-app -o yaml
+
+kubectl get pods --sort-by=.metadata.name
+
+kubectl get pods --sort-by=.spec.containers[0].name
