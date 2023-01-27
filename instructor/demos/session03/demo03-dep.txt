@@ -1,4 +1,4 @@
-kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo
+kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo --address 0.0.0.0
 
 kubectl apply -f mydep-01-lime.yaml
 
@@ -9,6 +9,10 @@ kubectl get rs
 kubectl get pods --show-labels
 
 kubectl describe rs mydep-66cccd9c7d
+
+--> chnage replicas mydep-01-lime.yaml
+
+kubectl apply -f mydep-01-lime.yaml
 
 kubectl apply -f mydep-01-yellow.yaml
 

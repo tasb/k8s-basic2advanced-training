@@ -8,7 +8,7 @@ metadata:
     tier: front
 spec:
   containers:
-  - image: nginx
+  - image: nginx:1.18-alpine
     name: nginx-container
     ports:
     - containerPort: 80

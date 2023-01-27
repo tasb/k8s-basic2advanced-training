@@ -17,5 +17,5 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: php-redis
+        image: gcr.io/google_samples/gb-frontend:v3

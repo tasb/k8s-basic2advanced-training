@@ -1,0 +1,39 @@
+kubectl get sc
+
+kubectl create ns pvc-ns
+
+k ns pvc-ns
+
+kubectl apply -f .
+
+kubectl get pv
+
+kubectl get pvc
+
+kubectl get all
+
+kubectl exec -it nginx-pvc-xxx -- bash
+
+hostname >> /storage/dynamic/file.txt && hostname >> /storage/retain/file.txt && hostname >> /storage/static/file.txt
+
+kubectl exec -it redis-pvc-xxx -- bash
+
+hostname >> /storage/dynamic/file.txt && hostname >> /storage/retain/file.txt && hostname >> /storage/static/file.txt
+
+kubectl get pv pvc-2f5d747a-c270-40c8-b8f9-7220a2232cc8 -o json | jq .spec.hostPath.path
+
+>>> Check folders contents
+
+kubectl delete deploy --all
+
+kubectl get pvc
+
+kubectl apply -f nginx-with-pvc.yaml
+
+kubectl get pvc
+
+kubectl delete pvc --all
+
+kubectl get pv
+
+>>> Check storage

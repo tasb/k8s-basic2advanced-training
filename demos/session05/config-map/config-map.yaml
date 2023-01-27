@@ -7,6 +7,6 @@ data:
   database_uri: mongodb://localhost:27018
 
   user-interface.properties: |
-    color.good=red
+    color.good=blue
     color.bad=yellow
     allow.textmode=true

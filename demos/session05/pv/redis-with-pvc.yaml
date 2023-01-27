@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-dep
+  name: redis-dep
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx-pvc
+      app: redis-pvc
   template:
     metadata:
       labels:
-        app: nginx-pvc
+        app: redis-pvc
     spec:
       nodeSelector:
         kubernetes.io/hostname: tiberna-rasp-003
       containers:
-      - name: nginx
-        image: nginx
+      - name: redis
+        image: redis
         ports:
         - containerPort: 80       
         volumeMounts:

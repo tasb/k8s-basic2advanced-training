@@ -1,5 +1,3 @@
-minikube tunnel
-
 kubectl apply -f svc-loadbalancer.yaml
 
 kubectl get svc

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sample-pv-claim
+  name: sample-pv-claim-dynamic
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: standard
+  storageClassName: microk8s-hostpath
   resources:
     requests:
-      storage: 3Gi
+      storage: 1Mi

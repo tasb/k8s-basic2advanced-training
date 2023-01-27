@@ -15,7 +15,7 @@ spec:
         app: clusterinfo
     spec:
       nodeSelector:
-        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64
       serviceAccountName: clusterinfo-sa
       containers:
         - name: clusterinfo
@@ -52,5 +52,3 @@ spec:
           effect: "NoExecute"
         - key: CriticalAddonsOnly
           operator: "Exists"
-      nodeSelector:
-        kubernetes.io/arch: amd64

@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mydep
-  annotation:
-    kubernetes.io/change-cause: "changed to marron"
 spec:
   replicas: 3
   selector:
