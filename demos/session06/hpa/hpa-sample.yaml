@@ -12,9 +12,11 @@ spec:
       labels:
         run: hpa-dotnet
     spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64 
       containers:
       - name: hpa-dotnet
-        image: tasb/hpa-dotnet-sample:v1
+        image: ghcr.io/theonorg/hpa-dotnet-sample:6.0
         ports:
         - containerPort: 80
         resources:
@@ -22,6 +24,7 @@ spec:
             cpu: 300m
           requests:
             cpu: 100m
+
 ---
 apiVersion: v1
 kind: Service

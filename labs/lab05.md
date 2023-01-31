@@ -7,7 +7,6 @@ On this lab you'll see how HPA works and have look into Kubernetes Dashboard.
 - [Prepare your cluster](lab09.md#prepare-your-cluster)
 - [Create Sample App](lab09.md#create-sample-app)
 - [Add Load Generator](lab09.md#add-load-generator)
-- [Enable Kubernetes Dashboard](lab09.md#enable-kubernetes-dashboard)
 - [Enable HPA](lab09.md#enable-hpa)
 - [Scale Down](lab09.md#scale-down)
 - [Cleanup Cluster](lab09.md#cleanup-cluster)
@@ -159,52 +158,6 @@ Check everything is working properly listing main objects on `hpa-sample` namesp
 ```bash
 kubectl get all -n hpa-sample
 ```
-
-## Enable Kubernetes Dashboard
-
-Kubernetes Dashboard allow you to have a GUI to monitor your cluster.
-
-To enable it you need to run the following command.
-
-```bash
-minikube addons enable dashboard
-```
-
-You should get an output like this.
-
-```bash
-    ▪ Using image kubernetesui/dashboard:v2.3.1
-    ▪ Using image kubernetesui/metrics-scraper:v1.0.7
-💡  Some dashboard features require the metrics-server addon. To enable all features please run:
-
-        minikube addons enable metrics-server
-
-
-🌟  The 'dashboard' addon is enabled
-```
-
-To get access to the dashboard active it using the next command.
-
-```bash
-minikube dashboard --url
-```
-
-You should get an output like this.
-
-```bash
-🤔  Verifying dashboard health ...
-🚀  Launching proxy ...
-🤔  Verifying proxy health ...
-http://127.0.0.1:37653/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
-```
-
-After that, open a browser window and navigate to the url returned on last command. You need to keep this terminal open to continue having access to the dashboard.
-
-To get metrics from `hpa-sample` namespace you need to change to that namespace on namespace selector on top of Kubernetes Dashboard.
-
-![Kubernetes Dashboard  Namespace Selector](images/lab09/image01.png "Kubernetes Dashboard Namespace Selector")
-
-Leave this browser window open that could allow you to see the behavior of your cluster when you start to add more load to it.
 
 ## Enable HPA
 

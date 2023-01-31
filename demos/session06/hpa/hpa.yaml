@@ -16,3 +16,35 @@ spec:
       target:
         type: AverageValue
         averageValue: 200m
+  # - type: Resource
+  #   resource:
+  #     name: memory
+  #     target:
+  #       type: AverageValue
+  #       averageValue: 100Mi
+
+  ## Metric from othet metric scrapper
+
+  # - type: Object
+  #   object:
+  #     metric:
+  #       name: requests-per-second
+  #     describedObject:
+  #       apiVersion: networking.k8s.io/v1
+  #       kind: Ingress
+  #       name: main-route
+  #     target:
+  #       type: Value
+  #       value: 2k
+  # External metric
+  # - type: External
+  #   external:
+  #     metric:
+  #       name: queue_messages_ready
+  #       selector:
+  #         matchLabels:
+  #           queue: "worker_tasks"
+  #     target:
+  #       type: AverageValue
+  #       averageValue: "30"
+  

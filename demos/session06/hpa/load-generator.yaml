@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       run: load-generator
-  replicas: 1
+  replicas: 10
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: load-generator
-        image: tasb/load-generator:env
+        image: ghcr.io/theonorg/load-generator:busybox
         imagePullPolicy: Always
         env:
           - name: URL_TEST

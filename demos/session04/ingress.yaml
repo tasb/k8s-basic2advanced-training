@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sample-ingress
+  name: k8s-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: test.ingress.tech
+  - host: k8s.ingress.tech
     http:
       paths:
       - path: /(.*)
@@ -23,7 +23,7 @@ spec:
             name: nginx-svc
             port:
               number: 8081
-  - host: k8s.ingress.tech
+  - host: test.ingress.tech
     http:
       paths:
       - path: /(.*)
