@@ -6,9 +6,18 @@ On this lab you'll create a new deployment and work with revisions.
 
 ## On this lab
 
-- [Create your first Deployment](lab06.md#create-your-first-deployment)
-- [Update deployment](lab06.md#update-deployment)
-- [Rollback deployment](lab06.md#rollback-deployment)
+- [Prepare your machine](#prepare-your-machine)
+- [Create your first Deployment](#create-your-first-deployment)
+- [Update deployment](#update-deployment)
+- [Rollback deployment](#rollback-deployment)
+
+## Prepare your machine
+
+First, enable `minikube` cluster on your machine.
+
+```bash
+minikube start --extra-config=kubelet.housekeeping-interval="10s"
+```
 
 ## Create your first Deployment
 

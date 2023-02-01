@@ -4,9 +4,18 @@ On this lab you'll create deployments and services to deploy an Echo App.
 
 ## On this lab
 
-- [Create deployments](lab07.md#create-deployments)
-- [Create services](lab07.md#create-services)
-- [Define ingress](lab07.md#define-ingress)
+- [Prepare your machine](#prepare-your-machine)
+- [Create deployments](#create-deployments)
+- [Create services](#create-services)
+- [Define ingress](#define-ingress)
+
+## Prepare your machine
+
+First, enable `minikube` cluster on your machine.
+
+```bash
+minikube start --extra-config=kubelet.housekeeping-interval="10s"
+```
 
 ## Create deployments
 
@@ -113,11 +122,19 @@ Let's create the service on the cluster.
 kubectl apply -f echo-api-svc.yaml -n echo-app-ns
 ```
 
-To check if everything is working properly navigate to <http://localhost:8080/echo/message>.
+Check your new service, using following command:
+
+```bash
+kubectl get svc -n echo-app-ns
+```
+
+You can confirm that you have an IP on column `External IP`. You can use this IP address to access your API.
+
+To check if everything is working properly navigate to <http://EXTERNAL_IP:8080/echo/message>.
 
 This service have another endpoint that you can call several time to check that you're being served by different pods.
 
-Navigate (or use `curl` command on command line) to <http://localhost:8080/hostname> and check the output to change (not on every call since your cluster uses a random algorithm as balancing algorithm).
+Navigate (or use `curl` command on command line) to <http://EXTERNAL_IP:8080/hostname> and check the output to change (not on every call since your cluster uses a random algorithm as balancing algorithm).
 
 Now let's create Echo Webapp service. Create a file called `echo-webapp-svc.yaml` and add the following content.
 
@@ -143,7 +160,15 @@ Let's create the service on the cluster.
 kubectl apply -f echo-webapp-svc.yaml -n echo-app-ns
 ```
 
-To check if everything is working properly navigate to <http://localhost:9000>.
+Check your new service, using following command:
+
+```bash
+kubectl get svc -n echo-app-ns
+```
+
+You can confirm that you have another IP on column `External IP`. You can use this IP address to access your API.
+
+To check if everything is working properly navigate to <http://EXTERNAL_IP:9000>.
 
 Now your already have your frontend and backend available from outside of your cluster.
 
@@ -304,7 +329,7 @@ The IP you need is on `ADDRESS` column.
 You need to change `hosts` file on your machine to have a match between URL defined on the ingress and this IP.
 
 ```bash
-sudo sh -c 'echo "192.168.49.2\techo-app.ingress.test\n" >> /etc/hosts'
+sudo sh -c 'echo -e "192.168.49.2\techo-app.ingress.test\n" >> /etc/hosts'
 ```
 
 Finally, let's test if everything is working properly.

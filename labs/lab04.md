@@ -4,16 +4,25 @@ On this lab you'll use Persistent Volumes, ConfigMaps and Secret for a full conf
 
 ## On this lab
 
-- [Prepare your cluster](lab08.md#prepare-your-cluster)
-- [Create persistent volume](lab08.md#create-persistent-volume)
-- [Create ConfigMaps and Secrets](lab08.md#create-configmaps-and-secrets)
-- [Add database](lab08.md#add-database)
-- [Update EchoApp](lab08.md#update-echoapp)
-- [Restart Database](lab08.md#restart-database)
+- [Prepare your machine](#prepare-your-machine)
+- [Prepare your cluster](#prepare-your-cluster)
+- [Create persistent volume](#create-persistent-volume)
+- [Create ConfigMaps and Secrets](#create-configmaps-and-secrets)
+- [Add database](#add-database)
+- [Update EchoApp](#update-echoapp)
+- [Restart Database](#restart-database)
+
+## Prepare your machine
+
+First, enable `minikube` cluster on your machine.
+
+```bash
+minikube start --extra-config=kubelet.housekeeping-interval="10s"
+```
 
 ## Prepare your cluster
 
-**You should follow this step if you didn't finish [previous lab](/lab07.md) or cleared your cluster after that.**
+**You should follow this step if you didn't finish [previous lab](/lab03.md) or cleared your cluster after that.**
 
 Then create your first ingress, you need to install an ingress controller on your cluster.
 

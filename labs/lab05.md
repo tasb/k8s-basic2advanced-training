@@ -4,16 +4,23 @@ On this lab you'll see how HPA works and have look into Kubernetes Dashboard.
 
 ## On this lab
 
-- [Prepare your cluster](lab09.md#prepare-your-cluster)
-- [Create Sample App](lab09.md#create-sample-app)
-- [Add Load Generator](lab09.md#add-load-generator)
-- [Enable HPA](lab09.md#enable-hpa)
-- [Scale Down](lab09.md#scale-down)
-- [Cleanup Cluster](lab09.md#cleanup-cluster)
+- [Prepare your machine](#prepare-your-machine)
+- [Prepare your cluster](#prepare-your-cluster)
+- [Create Sample App](#create-sample-app)
+- [Add Load Generator](#add-load-generator)
+- [Enable HPA](#enable-hpa)
+- [Scale Down](#scale-down)
+- [Cleanup Cluster](#cleanup-cluster)
+
+## Prepare your machine
+
+First, enable `minikube` cluster on your machine.
+
+```bash
+minikube start --extra-config=kubelet.housekeeping-interval="10s"
+```
 
 ## Prepare your cluster
-
-**If you already have done this on [Lab05](lab05.md#pod-advanced-configuration) you may skip this step.**
 
 Before you're able to use HPA and Kubernetes Dashboard, you need to have Metrics server running inside your cluster.
 

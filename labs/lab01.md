@@ -4,12 +4,12 @@ On this lab you'll have a first hands-on experience with Kubernetes.
 
 ## On this lab
 
-- [Prepare your machine](lab05.md#prepare-your-machine)
-- [Set context](lab05.md#set-context)
-- [Run your first pod](lab05.md#create-images)
-- [Using manifests](lab05.md#using-manifests)
-- [Pod advanced configuration](lab05.md#pod-advanced-configuration)
-- [Work with namespaces](lab05.md#work-with-namespaces)
+- [Prepare your machine](#prepare-your-machine)
+- [Set context](#set-context)
+- [Run your first pod](#create-images)
+- [Using manifests](#using-manifests)
+- [Pod advanced configuration](#pod-advanced-configuration)
+- [Work with namespaces](#work-with-namespaces)
 
 ## Prepare your machine
 
