@@ -16,7 +16,7 @@ spec:
         kubernetes.io/arch: arm64 
       containers:
       - name: probes-demo
-        image: ghcr.io/theonorg/swissknife-api:1.6
+        image: ghcr.io/theonorg/swissknife-api:1.7
         ports:
         - name: http-port
           containerPort: 80
@@ -29,7 +29,7 @@ spec:
           httpGet:
             path: /healthz/start
             port: http-port
-          periodSeconds: 20
+          periodSeconds: 5
           timeoutSeconds: 20
         readinessProbe:
           httpGet:
@@ -51,8 +51,9 @@ spec:
               value: Awesome
           initialDelaySeconds: 15
           periodSeconds: 2
-          failureThreshold: 3
           timeoutSeconds: 5
+          failureThreshold: 5
+          
 
 ---
 

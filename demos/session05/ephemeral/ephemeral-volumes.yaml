@@ -35,7 +35,7 @@ spec:
       volumes:
       - name: tempvol
         emptyDir:
-          sizeLimit: 10Ki
+          sizeLimit: 1Mi
           # medium: Memory
       - name: hostname
         hostPath:

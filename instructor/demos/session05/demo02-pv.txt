@@ -4,6 +4,8 @@ kubectl create ns pvc-ns
 
 k ns pvc-ns
 
+kubectl apply -f static
+
 kubectl apply -f .
 
 kubectl get pv
@@ -32,8 +34,24 @@ kubectl apply -f nginx-with-pvc.yaml
 
 kubectl get pvc
 
+kubectl get pods
+
 kubectl delete pvc --all
+kubectl delete deploy --all
 
 kubectl get pv
 
->>> Check storage
+kubectl apply -f .
+
+kubectl get pv
+
+kubectl delete pvc --all
+kubectl delete deploy --all
+
+kubectl patch pv sample-pv -p '{"spec":{"claimRef": null}}'
+
+kubectl apply -f .
+
+kubectl get pv 
+
+kubectl get pods

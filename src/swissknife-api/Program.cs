@@ -68,7 +68,7 @@ app.MapGet("/healthz/ready", (HealthCounter counter) =>
     counter.ReadyCount++;
     app.Logger.LogDebug("Ready probe #" + counter.ReadyCount);
     
-    if (counter.ReadyCount >= 15) {
+    if (counter.ReadyCount >= 10 && counter.ReadyCount < 20) {
         app.Logger.LogError("App not ready!");
         return Results.BadRequest();
     } else {
