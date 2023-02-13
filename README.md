@@ -98,13 +98,8 @@ You may navigate for each one individually or you may follow the sequence starti
 2. [Deployment lifecycle](labs/lab02.md)
 3. [Managing services](labs/lab03.md)
 4. [Storage in Kubernetes](labs/lab04.md)
-5. [Scalling and Probes](labs/lab05.md)
-6. Handle Kubernetes Scheduling
-7. Different Workloads
-8. Secure your cluster
-9. Network Policies
-10. Using Helm to deploy your app
-11. Monitor your cluster and your application
+5. [Auto-Scalling on your cluster](labs/lab05.md)
+6. [Different Workloads](labs/lab06.md)
 
 ## ToDo App project
 
@@ -117,17 +112,15 @@ With this simple ToDo App you have the hands-on experience to create all needed 
 Get access to the content used to share Kubernetes concepts during sessions.
 
 1. [Container orchestration](slides/Session01.pdf)
-2. Introduction to Kubernetes
-3. Deployment lifecycle
-4. Managing services
-5. Storage in Kubernetes
-6. Scalling and Probes
-7. Handle Kubernetes Scheduling
-8. Different Workloads
-9. Secure your cluster
-10. Network Policies
-11. Using Helm to deploy your app
-12. Monitor your cluster and your application
+2. [Introduction to Kubernetes](slides/Session02.pdf)
+3. [Deployment lifecycle](slides/Session03.pdf)
+4. [Managing services](slides/Session04.pdf)
+5. [Storage in Kubernetes](slides/Session05.pdf)
+6. [Scalling and Probes](slides/Session06.pdf)
+7. [Different Workloads](slides/Session07.pdf)
+8. Secure your cluster
+9. Helm
+10. Monitor your cluster and your application
 
 ## Feedback
 

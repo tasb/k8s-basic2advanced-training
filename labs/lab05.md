@@ -1,6 +1,6 @@
-# Lab 05 - Monitoring and Operation
+# Lab 05 - Auto-Scalling on your cluster
 
-On this lab you'll see how HPA works and have look into Kubernetes Dashboard.
+On this lab you'll see how HPA works
 
 ## On this lab
 
