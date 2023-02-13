@@ -23,6 +23,7 @@ spec:
   #       type: AverageValue
   #       averageValue: 100Mi
 
+
   ## Metric from othet metric scrapper
 
   # - type: Object
@@ -36,7 +37,10 @@ spec:
   #     target:
   #       type: Value
   #       value: 2k
-  # External metric
+
+
+  ## External metric
+  
   # - type: External
   #   external:
   #     metric:

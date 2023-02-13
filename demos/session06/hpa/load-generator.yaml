@@ -6,12 +6,14 @@ spec:
   selector:
     matchLabels:
       run: load-generator
-  replicas: 10
+  replicas: 1
   template:
     metadata:
       labels:
         run: load-generator
     spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64
       containers:
       - name: load-generator
         image: ghcr.io/theonorg/load-generator:busybox

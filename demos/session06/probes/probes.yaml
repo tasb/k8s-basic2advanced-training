@@ -16,7 +16,7 @@ spec:
         kubernetes.io/arch: arm64 
       containers:
       - name: probes-demo
-        image: ghcr.io/theonorg/swissknife-api:1.7
+        image: ghcr.io/theonorg/swissknife-api
         ports:
         - name: http-port
           containerPort: 80

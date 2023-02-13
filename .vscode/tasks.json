@@ -36,6 +36,47 @@
                 "${workspaceFolder}/src/swissknife-api/swissknife-api.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build",
+            "platform": "node",
+            "dockerBuild": {
+                "dockerfile": "${workspaceFolder}/src/rabbitmq-pub-sub/subscriber/Dockerfile",
+                "context": "${workspaceFolder}/src/rabbitmq-pub-sub/subscriber",
+                "pull": true
+            },
+            "node": {
+                "package": "${workspaceFolder}/src/rabbitmq-pub-sub/subscriber/package.json"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build"
+            ],
+            "platform": "node",
+            "node": {
+                "package": "${workspaceFolder}/src/rabbitmq-pub-sub/subscriber/package.json"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build"
+            ],
+            "dockerRun": {
+                "env": {
+                    "DEBUG": "*",
+                    "NODE_ENV": "development"
+                }
+            },
+            "node": {
+                "package": "${workspaceFolder}/src/rabbitmq-pub-sub/subscriber/package.json",
+                "enableDebugging": true
+            }
         }
     ]
 }
