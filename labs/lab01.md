@@ -6,7 +6,7 @@ On this lab you'll have a first hands-on experience with Kubernetes.
 
 - [Prepare your machine](#prepare-your-machine)
 - [Set context](#set-context)
-- [Run your first pod](#create-images)
+- [Run your first pod](#run-your-first-pod)
 - [Using manifests](#using-manifests)
 - [Pod advanced configuration](#pod-advanced-configuration)
 - [Work with namespaces](#work-with-namespaces)
@@ -396,5 +396,3 @@ The first voting app is still running and to delete it use the following command
 ```bash
 kubectl delete pod vote-app
 ```
-
-## Next Lab: [Deployment lifecycle >](lab02.md)

@@ -336,7 +336,3 @@ Now that you finished this lab you may clean up your cluster deleting the namesp
 ```bash
 kubectl delete ns hpa-sample
 ```
-
-## Next Lab: [Connect all the dots >](lab10.md)
-
-[Return home >](../README.md#labs)

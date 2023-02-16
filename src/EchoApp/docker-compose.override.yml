@@ -21,9 +21,7 @@ services:
       - ConnectionStrings__EchoDB=User ID=dbuser;Password=P@ssw0rd;Server=echo-db;Port=5432;Database=EchoDb;Integrated Security=true;Pooling=true;
     ports:
         - "10001:80"
-    deploy:
-      restart_policy:
-        condition: on-failure
+    restart: on-failure
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 

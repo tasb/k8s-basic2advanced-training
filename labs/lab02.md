@@ -182,5 +182,3 @@ kubectl delete deployment mydep
 ```
 
 Next you'll see how you can work with this deployments as a unique object.
-
-## Next Lab: [Managing services >](lab03.md)

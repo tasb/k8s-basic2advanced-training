@@ -341,7 +341,3 @@ Then navigate to <http://echo-app.ingress.test/api/echo/message> and you should 
 On webapp, if you fill the input box with same text and click on `Make Echo!` button, you should see an error.
 
 Let's check next lab to fix this!
-
-## Next Lab: [Persistence in Kubernetes >](lab08.md)
-
-[Return home >](../README.md#labs)

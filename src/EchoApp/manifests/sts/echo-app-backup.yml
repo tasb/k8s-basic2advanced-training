@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: echo-app-db-backup
+  namespace: echo-app-ns
+spec:
+  storageClassName: microk8s-hostpath
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: echo-app-db-backup
+  namespace: echo-app-ns
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: echo-app
+            tier: backup
+        spec:
+          containers:
+          - name: db-backup
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - cp -r /backup/source/* /backup/target
+            - sleep 3
+            volumeMounts:
+            - name: db-files
+              mountPath: /backup/source
+            - name: backup-folder
+              mountPath: /backup/target
+          restartPolicy: OnFailure
+          volumes:
+          - name: db-files
+            persistentVolumeClaim:
+              claimName: echo-app-db-pv-claim-echo-db-sts-0
+          - name: backup-folder
+            persistentVolumeClaim:
+              claimName: echo-app-db-backup
+          nodeSelector:
+            kubernetes.io/hostname: tiberna-rasp-003
