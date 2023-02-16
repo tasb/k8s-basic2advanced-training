@@ -82,7 +82,7 @@ spec:
         image: tasb/echo-api:k8s
         ports:
         - containerPort: 80
-      env:
+        env:
         - name: ConnectionStrings__DefaultConnection
           valueFrom:
             secretKeyRef:
@@ -113,7 +113,7 @@ spec:
         image: tasb/echo-webapp:k8s
         ports:
         - containerPort: 80
-      env:
+        env:
         - name: EchoAPIServer
           valueFrom:
             configMapKeyRef:
