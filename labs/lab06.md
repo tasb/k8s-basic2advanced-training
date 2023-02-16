@@ -319,7 +319,7 @@ You should get the name of the PV as the output of last command.
 Now, you can get the path where the data is stored.
 
 ```bash
-kubectl describe pv $PV_NAME>
+kubectl describe pv $PV_NAME
 ```
 
 On the output you get several details from the PV but you should focus on `Path` property.
