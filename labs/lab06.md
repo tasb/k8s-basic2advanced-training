@@ -23,7 +23,7 @@ minikube start --extra-config=kubelet.housekeeping-interval="10s"
 
 ## Prepare your cluster
 
-**You should follow this step if you didn't finish [Lab04](/lab04.md) or cleared your cluster after that.**
+**You should follow this step if you didn't finish [Lab04](./lab04.md) or cleared your cluster after that.**
 
 Then create your first ingress, you need to install an ingress controller on your cluster.
 
@@ -53,7 +53,7 @@ Your ingress controller is ready to be used when you see `Running` as the status
 Then, apply the following file to recreate all resources.
 
 ```bash
-kubectl apply -f [echo-app-all.yaml](https://raw.githubusercontent.com/tasb/docker-kubernetes-training/main/src/EchoApp/manifests/sts/echo-app-all.yaml)
+kubectl apply -f https://raw.githubusercontent.com/theonorg/k8s-basic2advanced-training/main/src/EchoApp/manifests/sts/echo-app-all.yaml
 ```
 
 Now you're ready to continue to reconfigure your app.
