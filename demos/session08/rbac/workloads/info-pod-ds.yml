@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
+  namespace: rbac-ns
   name: podinfo-ds
 spec:
   selector:
