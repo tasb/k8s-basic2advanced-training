@@ -80,7 +80,7 @@ spec:
     spec:
       containers:
       - name: echo-api
-        image: tasb/echo-api:k8s
+        image: tasb/echo-api:k8s-v2
         ports:
         - containerPort: 80
         env:
