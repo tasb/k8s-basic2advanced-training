@@ -54,6 +54,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: echo-app-cfg
+  namespace: echo-app-ns
 data:
   echo-api-server: echo-api-svc:8080
 
