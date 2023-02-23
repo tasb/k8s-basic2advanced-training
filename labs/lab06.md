@@ -175,7 +175,7 @@ Using StatefulSet definition, your database is now located on `echo-db-sts-0.ech
 Then, you need to encode your connection string to Base64.
 
 ```bash
-echo "Server=echo-db-sts-0.echo-db-sts-svc.echo-app-ns.svc.cluster.local,1433;Initial Catalog=echo-log;User ID=SA;Password=P@ssw0rd" | base64
+echo "Server=echo-db-sts-0.echo-db-sts-svc.echo-app-ns.svc.cluster.local,1433;Initial Catalog=echo-log;User ID=SA;Password=P@ssw0rd" | base64  | tr -d '\n'
 ```
 
 Now, copy to the clipboard the result and let's update the secret already deployed.
