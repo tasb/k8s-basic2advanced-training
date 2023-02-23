@@ -111,7 +111,7 @@ spec:
     spec:
       containers:
       - name: echo-webapp
-        image: tasb/echo-webapp:k8s
+        image: tasb/echo-webapp:k8s-v2
         ports:
         - containerPort: 80
         env:
