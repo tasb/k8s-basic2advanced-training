@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
       - name: echo-db
-        image: postgres:14.2-alpine
+        image: mcr.microsoft.com/mssql/server:2017-latest
         ports:
         - containerPort: 1433
         env:
