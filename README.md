@@ -100,7 +100,7 @@ You may navigate for each one individually or you may follow the sequence starti
 4. [Storage in Kubernetes](labs/lab04.md)
 5. [Auto-Scalling on your cluster](labs/lab05.md)
 6. [Different Workloads](labs/lab06.md)
-7. Manage your pods connections
+7. [Manage your pods connections](labs/lab07.md)
 8. Use Helm to manage your manifests
 9. Monitor your cluster
 

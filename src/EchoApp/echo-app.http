@@ -1,0 +1,20 @@
+GET http://echo-app.ingress.test/api/hostname
+
+###
+
+GET http://echo-app.ingress.test/api/logs
+
+###
+
+GET http://echo-app.ingress.test/api/echo/teste
+
+###
+
+GET http://echo-app.ingress.test
+
+###
+
+POST http://echo-app.ingress.test
+Content-Type: application/json
+
+Message="VSCode Teste"
