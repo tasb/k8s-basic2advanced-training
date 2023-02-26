@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
       - name: echo-db
-        image: postgres:14.2-alpine
+        image: mcr.microsoft.com/mssql/server:2017-latest
         ports:
         - containerPort: 1433
         env:
@@ -175,7 +175,7 @@ Using StatefulSet definition, your database is now located on `echo-db-sts-0.ech
 Then, you need to encode your connection string to Base64.
 
 ```bash
-echo "Server=echo-db-sts-0.echo-db-sts-svc.echo-app-ns.svc.cluster.local,1433;Initial Catalog=echo-log;User ID=SA;Password=P@ssw0rd" | base64
+echo "Server=echo-db-sts-0.echo-db-sts-svc.echo-app-ns.svc.cluster.local,1433;Initial Catalog=echo-log;User ID=SA;Password=P@ssw0rd" | base64 -w 0
 ```
 
 Now, copy to the clipboard the result and let's update the secret already deployed.
@@ -216,7 +216,7 @@ You can open a browser and navigate to <http://echo-app.ingress.test> and test y
 
 To backup database data let's create a CronJob to run periodically to copy your database data to a target folder.
 
-Start to create a file named `echo-app-backup.yml` and add the following content.
+Start to create a file named `echo-app-backup.yaml` and add the following content.
 
 ```yaml
 apiVersion: v1
@@ -278,7 +278,7 @@ The job will run every minute due to `schedule: "* * * * *"`. You can use [cront
 Let's create the cronjob.
 
 ```bash
-kubectl apply -f echo-app-backup.yml -n echo-app-ns
+kubectl apply -f echo-app-backup.yaml -n echo-app-ns
 ```
 
 Check if your CronJob where created properly.
