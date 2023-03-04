@@ -45,7 +45,7 @@ kubectl apply -f nodename.yaml
 - Add NoExecute taint
 
 ```bash
-kubectl taint nodes tiberna-hp node.kubernetes.io/not-ready=true:NoExecute
+kubectl taint nodes tiberna-hp not-ready=true:NoExecute
 ```
 
 - Check some pods starting to be in Terminating status
@@ -66,5 +66,5 @@ kubectl get ds calico-node -n kube-system -o json | jq ".spec.template.spec.tole
 kubectl taint nodes tiberna-rasp-001 PriorityLevel=Low:NoSchedule-
 kubectl taint nodes tiberna-rasp-002 PriorityLevel=Normal:NoSchedule-
 kubectl taint nodes tiberna-rasp-003 PriorityLevel=Critical:NoSchedule-
-kubectl taint nodes tiberna-hp node.kubernetes.io/not-ready=true:NoExecute-
+kubectl taint nodes tiberna-hp not-ready=true:NoExecute-
 ```

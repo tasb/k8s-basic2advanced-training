@@ -105,7 +105,7 @@ kubectl apply -f deny-all.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms default-deny-all
+kubectl describe netpol -n echo-app-ns default-deny-all
 ```
 
 Now let's go back to the testing pods to check if you can reach the service on other namespace.
