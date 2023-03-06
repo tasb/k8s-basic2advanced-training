@@ -28,7 +28,26 @@ minikube stop
 To start the cluster and enable Calico plugin, you need to execute the following command.
 
 ```bash
-minikube start --cni calico
+minikube start --network-plugin=cni
+```
+
+After minikube starts, let's configure Calico using instructions shared on Calico website, since enabling the plugin directly didn't work.
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/calico.yaml
+```
+
+To check if Calico is running properly, execute teh following command.
+
+```bash
+kubectl get pods -l k8s-app=calico-node -A
+```
+
+And you should get an output similiar with this, stating `1/1` on `READY` column.
+
+```bash
+NAMESPACE     NAME                READY   STATUS    RESTARTS   AGE
+kube-system   calico-node-qhmdv   1/1     Running   0          118s
 ```
 
 Let's start to create network policies.
@@ -193,7 +212,7 @@ kubectl apply -f allow-api-to-database.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms allow-api-to-database
+kubectl describe netpol -n echo-app-ns allow-api-to-database
 ```
 
 You opened the outbound (egress) connectivity from API pods to Database pods but you need to open inbound (ingress) connectivity.
@@ -231,7 +250,7 @@ kubectl apply -f allow-database-from-api.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms allow-database-from-api
+kubectl describe netpol -n echo-app-ns allow-database-from-api
 ```
 
 ## Open communication between Webapp and API
@@ -271,7 +290,7 @@ kubectl apply -f allow-api-from-webapp.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms allow-api-from-webapp
+kubectl describe netpol -n echo-app-ns allow-api-from-webapp
 ```
 
 Then you need to enable outbound connectivity on Webapp to allow it to reach API.
@@ -319,7 +338,7 @@ kubectl apply -f allow-webapp-to-api.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms allow-webapp-to-api
+kubectl describe netpol -n echo-app-ns allow-webapp-to-api
 ```
 
 Now you can try to execute the application again on your browser. But, what you'll get is a HTTP 502 Bad Gateway error.
@@ -363,7 +382,7 @@ kubectl apply -f allow-ingress-to-webapp.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms allow-ingress-to-webapp
+kubectl describe netpol -n echo-app-ns allow-ingress-to-webapp
 ```
 
 Check this manifest and see that your are open communication for your pods with following labels:
@@ -414,7 +433,7 @@ kubectl apply -f allow-ingress-to-api.yaml
 You can check the details of you network policy with the following command.
 
 ```bash
-kubectl describe netpol -n echo-app-ms allow-ingress-to-api
+kubectl describe netpol -n echo-app-ns allow-ingress-to-api
 ```
 
 Now you can test your application using your browser and navigate to <http://echo-app.ingress.test>.
