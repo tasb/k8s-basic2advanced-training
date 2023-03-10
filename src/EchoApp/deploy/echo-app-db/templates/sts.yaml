@@ -35,7 +35,9 @@ spec:
         volumeMounts:
         - name: {{ include "echo-app-db.fullname" . }}-pv-claim
           mountPath: /var/opt/mssql/data
-      nodeName: "tiberna-hp"
+      {{- with .Values.nodeName }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
   volumeClaimTemplates:
   - metadata:
       name: {{ include "echo-app-db.fullname" . }}-pv-claim
