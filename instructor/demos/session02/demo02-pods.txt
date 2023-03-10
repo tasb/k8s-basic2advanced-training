@@ -73,3 +73,5 @@ kubectl get pod vote-app -o yaml
 kubectl get pods --sort-by=.metadata.name
 
 kubectl get pods --sort-by=.spec.containers[0].name
+
+kubectl get pods --sort-by='.status.containerStatuses[0].restartCount' -A
