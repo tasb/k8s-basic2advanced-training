@@ -27,7 +27,7 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
         - name: vote-front
-          image: "ghcr.io/theonorg/vote-app:{{ .Values.images.backTag }}"
+          image: "ghcr.io/theonorg/vote-app:{{ .Values.images.frontTag }}"
           ports:
             - containerPort: 80
               name: http

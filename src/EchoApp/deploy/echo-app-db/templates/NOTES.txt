@@ -1,0 +1,8 @@
+1. Check if StatefulSet is running properly.
+  kubectl --namespace {{ .Release.Namespace }} get sts
+
+2. Confirm pods are running. You should get a list of {{ .Values.replicaCount }} pods
+  kubectl --namespace {{ .Release.Namespace }} get pods
+
+3. Check if an headless service was created properly, with name {{ include "echo-app-db.fullname" . }}-svc
+  kubectl --namespace {{ .Release.Namespace }} get svc

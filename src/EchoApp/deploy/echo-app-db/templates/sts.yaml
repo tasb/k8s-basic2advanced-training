@@ -1,0 +1,49 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "echo-app-db.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: db
+  serviceName: "{{ include "echo-app-db.fullname" . }}-svc"
+  replicas: {{ .Values.replicaCount }}
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: {{ .Values.retentionPolicy.delete | default "Retain" }}
+    whenScaled: {{ .Values.retentionPolicy.scale | default "Retain" }}
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: db
+    spec:
+      containers:
+      - name: echo-db
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "echo-app-db.fullname" . }}-secret
+              key: dbpass
+        volumeMounts:
+        - name: {{ include "echo-app-db.fullname" . }}-pv-claim
+          mountPath: /var/opt/mssql/data
+      nodeName: "tiberna-hp"
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ include "echo-app-db.fullname" . }}-pv-claim
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      {{- if .Values.storageClassName }}
+      storageClassName: {{ .Values.storageClassName }}
+      {{- end }}
+      resources:
+        requests:
+          storage: {{ .Values.storageSize | default "1Gi" }}

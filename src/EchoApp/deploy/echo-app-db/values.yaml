@@ -1,0 +1,17 @@
+
+replicaCount: 1
+
+image:
+  repository: mcr.microsoft.com/mssql/server
+  tag: 2017-latest
+
+retentionPolicy:
+  delete: ""
+  scale: ""
+
+storageSize: ""
+storageClassName: ""
+
+dbPass: ""
+
+nodeName: "tiberna-hp"
