@@ -22,7 +22,7 @@ This plugin will implement all your network configurations and additionally have
 If you have your minikube cluster running, you need to stop it.
 
 ```bash
-minikube stop
+minikube delete
 ```
 
 To start the cluster and enable Calico plugin, you need to execute the following command.
@@ -48,6 +48,20 @@ And you should get an output similiar with this, stating `1/1` on `READY` column
 ```bash
 NAMESPACE     NAME                READY   STATUS    RESTARTS   AGE
 kube-system   calico-node-qhmdv   1/1     Running   0          118s
+```
+
+Now, let's enable needed addons for EchoApp to work.
+
+```bash
+minikube addons enable metrics-server
+
+minikube addons enable ingress
+```
+
+Finally, use the following command to add all Echo App resources that you previously configured.
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/theonorg/k8s-basic2advanced-training/main/src/EchoApp/manifests/sts/echo-app-all-final.yaml
 ```
 
 Let's start to create network policies.
