@@ -35,8 +35,8 @@ spec:
         volumeMounts:
         - name: {{ include "echo-app-db.fullname" . }}-pv-claim
           mountPath: /var/opt/mssql/data
-      {{- with .Values.nodeName }}
-      {{- toYaml . | nindent 6 }}
+      {{- if .Values.nodeName }}
+      nodeName: {{ .Values.nodeName }}
       {{- end }}
   volumeClaimTemplates:
   - metadata:
