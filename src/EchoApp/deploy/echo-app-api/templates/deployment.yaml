@@ -24,6 +24,6 @@ spec:
         - name: ConnectionStrings__DefaultConnection
           valueFrom:
             secretKeyRef:
-              name: echo-api-db-secret
+              name: {{ include "echo-app-api.fullname" . }}-secret
               key: connString
 
