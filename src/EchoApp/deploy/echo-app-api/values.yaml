@@ -1,0 +1,19 @@
+
+replicaCount: 1
+
+image:
+  repository: tasb/echo-api
+  tag: k8s-v2
+
+service:
+  port: 8080
+
+dbHost: "echo-app-db-0.echo-app-db-svc.echo-app-ns.svc.cluster.local"
+dbUser: "SA"
+dbPass: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilization: 250m
