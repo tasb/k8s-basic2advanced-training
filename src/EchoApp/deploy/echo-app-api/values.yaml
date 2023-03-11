@@ -17,3 +17,19 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilization: 250m
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  host: echo-app.ingress.test
+      
+  paths:
+  - path: /api/(.*)
+    pathType: Prefix
+    # backend:
+    #   service:
+    #     name: echo-app-api-svc
+    #     port:
+    #       number: 8080

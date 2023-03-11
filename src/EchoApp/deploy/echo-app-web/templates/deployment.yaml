@@ -1,0 +1,28 @@
+±
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "echo-app-web.fullname" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: front
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: front
+    spec:
+      containers:
+      - name: echo-webapp
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80
+        env:
+        - name: EchoAPIServer
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "echo-app-web.fullname" . }}-cfg
+              key: echo-api-server

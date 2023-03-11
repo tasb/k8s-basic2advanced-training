@@ -1,6 +1,6 @@
 apiVersion: v2
-name: echo-app-api
-description: EchoApp API chart
+name: echo-app-web
+description: EchoApp WebApp chart
 type: application
 version: 1.0.0
 appVersion: "1.0.0"
