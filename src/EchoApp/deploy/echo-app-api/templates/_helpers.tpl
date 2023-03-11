@@ -24,5 +24,5 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{- define "echo-app-api.connString" -}}
-{{- printf "%s%s%s%s%s%s" "Server=" {{ .Values.dbHost }} ",1433;Initial Catalog=echo-log;User ID=" {{ .Values.dbUser }} ";Password=" {{ .Values.dbPass }} | trunc 63 | trimSuffix "-" }}
+{{- printf "%s%s%s%s%s%s" "Server=" .Values.dbHost ",1433;Initial Catalog=echo-log;User ID=" .Values.dbUser ";Password=" .Values.dbPass }}
 {{- end }}
