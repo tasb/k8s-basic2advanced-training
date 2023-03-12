@@ -137,7 +137,7 @@ On this file you create a StatefulSet resource and the headless service needed t
 
 Look that you create a PVC template that will automatically create a PVC and make the link between the pods and PVC.
 
-Using this resource, you have a well defined structure for the names of all resources which allow you to handle more the dynamic behaviour of both resources.
+Using this resource, you have a well defined structure for the names of all resources which allow you to handle more the dynamic behavior of both resources.
 
 Now you need to start change your app. During the next steps your application may me broken and not working properly.
 
@@ -184,9 +184,9 @@ Now, copy to the clipboard the result and let's update the secret already deploy
 kubectl edit secret echo-api-db-secret -n echo-app-ns
 ```
 
-This command will open your prefered code editor on your machine. On the editor, you need to change the value of the key `.data.connString` with the value you copied to the clipboard.
+This command will open your preferred code editor on your machine. On the editor, you need to change the value of the key `.data.connString` with the value you copied to the clipboard.
 
-When you close the code editor, the new definiton is automatically updated on your cluster.
+When you close the code editor, the new definition is automatically updated on your cluster.
 
 ## Restart API deployment
 
@@ -271,7 +271,7 @@ spec:
               claimName: echo-app-db-backup
 ```
 
-On this file you create a PVC to handle your target folder to save database files and a CronJob to run perodically and copy files from one folder to another.
+On this file you create a PVC to handle your target folder to save database files and a CronJob to run periodically and copy files from one folder to another.
 
 The job will run every minute due to `schedule: "* * * * *"`. You can use [crontab guru](https://crontab.guru/#*_*_*_*_*) to generate different schedules.
 
@@ -287,7 +287,7 @@ Check if your CronJob where created properly.
 kubectl get cj -n echo-app-ns
 ```
 
-You should have an output similiar with this.
+You should have an output similar with this.
 
 ```bash
 NAME                 SCHEDULE    SUSPEND   ACTIVE   LAST SCHEDULE   AGE
@@ -306,7 +306,7 @@ If you run this command several times, you can confirm that you have an history 
 
 ## Check backup data
 
-Finally, let's confirm thay the backup was made properly.
+Finally, let's confirm that the backup was made properly.
 
 Let's list all your PersistentVolumes and find out the name of the PV bound to the PVC named `echo-app-db-backup`.
 

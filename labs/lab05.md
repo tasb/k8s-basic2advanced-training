@@ -1,4 +1,4 @@
-# Lab 05 - Auto-Scalling on your cluster
+# Lab 05 - Auto-Scaling on your cluster
 
 On this lab you'll see how HPA works
 

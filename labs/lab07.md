@@ -1,6 +1,6 @@
 # Secure your pods connections
 
-On this lab you'll add network policies to your Echo App solution to only allow needed coonections from all your pods.
+On this lab you'll add network policies to your Echo App solution to only allow needed connections from all your pods.
 
 ## On this lab
 
@@ -43,7 +43,7 @@ To check if Calico is running properly, execute teh following command.
 kubectl get pods -l k8s-app=calico-node -A
 ```
 
-And you should get an output similiar with this, stating `1/1` on `READY` column.
+And you should get an output similar with this, stating `1/1` on `READY` column.
 
 ```bash
 NAMESPACE     NAME                READY   STATUS    RESTARTS   AGE

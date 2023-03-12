@@ -101,7 +101,7 @@ You may navigate for each one individually or you may follow the sequence starti
 5. [Auto-Scalling on your cluster](labs/lab05.md)
 6. [Different Workloads](labs/lab06.md)
 7. [Manage your pods connections](labs/lab07.md)
-8. Use Helm to manage your manifests
+8. [Use Helm to manage your manifests](labs/lab08.md)
 9. Monitor your cluster
 
 ## ToDo App project
@@ -119,10 +119,10 @@ Get access to the content used to share Kubernetes concepts during sessions.
 3. [Deployment lifecycle](slides/Session03.pdf)
 4. [Managing services](slides/Session04.pdf)
 5. [Storage in Kubernetes](slides/Session05.pdf)
-6. [Scalling and Probes](slides/Session06.pdf)
+6. [Scaling and Probes](slides/Session06.pdf)
 7. [Different Workloads](slides/Session07.pdf)
 8. [Secure your cluster](slides/Session08.pdf)
-9. Helm
+9. [Helm](slides/Session08.pdf)
 10. Monitor your cluster and your application
 
 ## Feedback
