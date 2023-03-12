@@ -5,7 +5,6 @@
   {{- range .Values.ingress.paths }}
   http://{{ $host }}{{ .path }}
   {{- end }}
-{{- end }}
 {{- else }}
 1. To check if your service is running properly you need to run a port-forward command:
   kubectl --namespace {{ .Release.Namespace }} port-forward svc/{{ include "echo-app-web.fullname" . }}-svc 9000:{{ .Values.service.port }}
