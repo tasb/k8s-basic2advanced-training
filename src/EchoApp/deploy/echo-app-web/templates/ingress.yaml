@@ -15,7 +15,7 @@ spec:
   - host: {{ .Values.ingress.host }}
     http:
       paths:
-        {{- range .paths }}
+        {{- range .Values.ingress.paths }}
         - path: {{ .path }}
           pathType: {{ .pathType }}
           backend:
