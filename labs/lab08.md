@@ -197,8 +197,8 @@ helm list -n echo-app-ns
 And get an output similar with this. Pay attention on the column `STATUS` where you should have a `deployed` value.
 
 ```bash
-NAME        	NAMESPACE  	REVISION	UPDATED                                	STATUS  	CHART             	APP VERSION
-echo-app-db 	echo-app-ns	1       	2023-03-11 00:01:21.940402012 +0000 UTC	deployed	echo-app-db-0.5.0 	0.1.0
+NAME         NAMESPACE   REVISION UPDATED                                 STATUS   CHART              APP VERSION
+echo-app-db  echo-app-ns 1        2023-03-11 00:01:21.940402012 +0000 UTC deployed echo-app-db-0.5.0  0.1.0
 ```
 
 After, release is made, you can use `kubectl` commands like you have used on all the other labs.
@@ -234,9 +234,9 @@ helm list -n echo-app-ns
 And get an output similar with this. Pay attention on the column `STATUS` where you should have a `deployed` value on both releases.
 
 ```bash
-NAME        	NAMESPACE  	REVISION	UPDATED                                	STATUS  	CHART             	APP VERSION
-echo-app-api	echo-app-ns	2       	2023-03-12 00:06:25.986231865 +0000 UTC	deployed	echo-app-api-1.0.0	1.0.0
-echo-app-db 	echo-app-ns	1       	2023-03-11 00:01:21.940402012 +0000 UTC	deployed	echo-app-db-0.5.0 	0.1.0
+NAME         NAMESPACE   REVISION UPDATED                                 STATUS   CHART              APP VERSION
+echo-app-api echo-app-ns 2        2023-03-12 00:06:25.986231865 +0000 UTC deployed echo-app-api-1.0.0 1.0.0
+echo-app-db  echo-app-ns 1        2023-03-11 00:01:21.940402012 +0000 UTC deployed echo-app-db-0.5.0  0.1.0
 ```
 
 After, release is made, you can use `kubectl` commands like you have used on all the other labs.
@@ -304,10 +304,10 @@ helm list -n echo-app-ns
 And get an output similar with this. Pay attention on the column `STATUS` where you should have a `deployed` value on both releases.
 
 ```bash
-NAME        	NAMESPACE  	REVISION	UPDATED                                	STATUS  	CHART             	APP VERSION
-echo-app-api	echo-app-ns	2       	2023-03-12 00:06:25.986231865 +0000 UTC	deployed	echo-app-api-1.0.0	1.0.0
-echo-app-db 	echo-app-ns	1       	2023-03-11 00:01:21.940402012 +0000 UTC	deployed	echo-app-db-0.5.0 	0.1.0
-echo-app-web	echo-app-ns	2       	2023-03-12 00:25:25.310538245 +0000 UTC	deployed	echo-app-web-1.0.0	1.0.0
+NAME         NAMESPACE   REVISION UPDATED                                 STATUS   CHART              APP VERSION
+echo-app-api echo-app-ns 2        2023-03-12 00:06:25.986231865 +0000 UTC deployed echo-app-api-1.0.0 1.0.0
+echo-app-db  echo-app-ns 1        2023-03-11 00:01:21.940402012 +0000 UTC deployed echo-app-db-0.5.0  0.1.0
+echo-app-web echo-app-ns 2        2023-03-12 00:25:25.310538245 +0000 UTC deployed echo-app-web-1.0.0 1.0.0
 ```
 
 After, release is made, you can use `kubectl` commands like you have used on all the other labs.
