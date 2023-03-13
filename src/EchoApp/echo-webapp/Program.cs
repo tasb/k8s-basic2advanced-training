@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging.Console;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("CorsPolicy");
+app.MapMetrics();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

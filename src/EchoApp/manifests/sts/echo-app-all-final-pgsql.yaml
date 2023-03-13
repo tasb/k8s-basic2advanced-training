@@ -1,0 +1,234 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: echo-app-ns
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-api-svc
+  namespace: echo-app-ns
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+      name: api
+  selector:
+    app: echo-app
+    tier: back
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-webapp-svc
+  namespace: echo-app-ns
+  annotations:
+    prometheus.io/port: "9000"
+    prometheus.io/scrape: "true"
+spec:
+  ports:
+    - port: 9000
+      targetPort: 80
+      name: web
+  selector:
+    app: echo-app
+    tier: front
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: echo-api-db-secret
+  namespace: echo-app-ns
+data:
+  dbpass: UEBzc3cwcmQ=
+  connString: VXNlciBJRD1kYnVzZXI7UGFzc3dvcmQ9UEBzc3cwcmQ7U2VydmVyPWVjaG8tZGItc3RzLTAuZWNoby1kYi1zdHMtc3ZjLmVjaG8tYXBwLW5zLnN2Yy5jbHVzdGVyLmxvY2FsO1BvcnQ9NTQzMjtEYXRhYmFzZT1FY2hvRGI7SW50ZWdyYXRlZCBTZWN1cml0eT10cnVlO1Bvb2xpbmc9dHJ1ZTsK
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-app-cfg
+  namespace: echo-app-ns
+data:
+  echo-api-server: echo-api-svc:8080
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: echo-db-sts
+  namespace: echo-app-ns
+spec:
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: db
+  serviceName: "echo-db-sts-svc"
+  replicas: 1
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: db
+    spec:
+      containers:
+      - name: echo-db
+        image: postgres:14.2-alpine
+        ports:
+        - containerPort: 1433
+        env:
+        - name: POSTGRES_USER
+          value: dbuser
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: echo-api-db-secret
+              key: dbpass
+        volumeMounts:
+        - name: echo-app-db-pv-claim
+          mountPath: /var/opt/mssql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: echo-app-db-pv-claim
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-db-sts-svc
+  namespace: echo-app-ns
+spec:
+  ports:
+    - port: 1433
+      targetPort: 1433
+      name: db
+  selector:
+    app: echo-app
+    tier: db
+  clusterIP: None
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-api-dep
+  namespace: echo-app-ns
+  annotations:
+    prometheus.io/port: "80"
+    prometheus.io/scrape: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: back
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: back
+    spec:
+      containers:
+      - name: echo-api
+        image: ghcr.io/theonorg/echo-webapi:arm-metrics
+        ports:
+        - containerPort: 80
+        env:
+        - name: ConnectionStrings__EchoDB
+          valueFrom:
+            secretKeyRef:
+              name: echo-api-db-secret
+              key: connString
+      nodeSelector:
+        kubernetes.io/arch: arm64
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-webapp-dep
+  namespace: echo-app-ns
+  annotations:
+    prometheus.io/port: "80"
+    prometheus.io/scrape: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: front
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: front
+    spec:
+      containers:
+      - name: echo-webapp
+        image: ghcr.io/theonorg/echo-webapp:arm-metrics
+        ports:
+        - containerPort: 80
+        env:
+        - name: EchoAPIServer
+          valueFrom:
+            configMapKeyRef:
+              name: echo-app-cfg
+              key: echo-api-server
+      nodeSelector:
+        kubernetes.io/arch: arm64
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-app-ingress
+  namespace: echo-app-ns
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: echo-app.ingress.test
+    http:
+      paths:
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: echo-webapp-svc
+            port:
+              number: 9000
+      - path: /api/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: echo-api-svc
+            port:
+              number: 8080
+

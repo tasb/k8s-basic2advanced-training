@@ -4,14 +4,14 @@ services:
     image: postgres:14.2-alpine
   
   echo-webapp:
-    image: ghcr.io/theonorg/echo-webapp:arm
+    image: ghcr.io/theonorg/echo-webapp:arm-metrics
     build:
       context: echo-webapp
     depends_on:
       - echo-api
   
   echo-api:
-    image: ghcr.io/theonorg/echo-webapi:arm
+    image: ghcr.io/theonorg/echo-webapi:arm-metrics
     build:
       context: echo-api
       dockerfile: ./Dockerfile.multi

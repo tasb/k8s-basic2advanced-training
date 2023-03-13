@@ -13,16 +13,17 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - Logging__LogLevel__Microsoft.AspNetCore=Warning
+      - Logging__LogLevel__Default=Warning
       - EchoAPIServer=echo-api
 
   echo-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__EchoDB=User ID=dbuser;Password=P@ssw0rd;Server=echo-db;Port=5432;Database=EchoDb;Integrated Security=true;Pooling=true;
+      - Logging__LogLevel__Microsoft.AspNetCore=Debug
+      - Logging__LogLevel__Default=Debug
     ports:
         - "10001:80"
     restart: on-failure
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
-
-    
